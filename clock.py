@@ -33,6 +33,10 @@ class GraphicsTest(SampleBase):
             self.weather_data ={"temp":"N/A", "desc": "Error connecting"}
 
     def run(self):
+        options = RGBMatrixOptions()
+        options.cols = 64
+        options.led_slowdown_gpio = 3
+
         canvas = self.matrix
         # Load fonts
         time_font = graphics.Font()
@@ -69,13 +73,15 @@ class GraphicsTest(SampleBase):
             # Clear the canvas
             canvas.Clear()
 
-            # Draw time
+            # Draw time and temperature
             graphics.DrawText(canvas, maridian_font, 7, 13, color, f"{current_hour}:{current_min}")
             graphics.DrawText(canvas, date_font, 33, 31, color, f"{self.weather_data['temp']}")
              # Calculate the time to sleep until the next minute
             now = datetime.now()  # Update now to get the most accurate current time
             seconds_to_sleep = 60 - now.second - now.microsecond / 1_000_000
-            time.sleep(seconds_to_sleep)  # Sleep until the beginning of the next minute                                                                                                                                          # Main function
+            time.sleep(seconds_to_sleep)  # Sleep until the beginning of the next minute
+
+# Main function
 if __name__ == "__main__":
     graphics_test = GraphicsTest()
     if (not graphics_test.process()):
