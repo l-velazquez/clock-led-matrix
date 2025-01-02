@@ -70,11 +70,13 @@ class GraphicsTest(SampleBase):
             canvas.Clear()
 
             # Draw time
-
             graphics.DrawText(canvas, maridian_font, 7, 13, color, f"{current_hour}:{current_min}")
             graphics.DrawText(canvas, date_font, 33, 31, color, f"{self.weather_data['temp']}")
              # Calculate the time to sleep until the next minute
             now = datetime.now()  # Update now to get the most accurate current time
-            seconds_to_sleep = 60 - now.second - now.microsecond / 1_000_000                                                 time.sleep(seconds_to_sleep)  # Sleep until the beginning of the next minute                                                                                                                                          # Main function
-if __name__ == "__main__":                                                                                           graphics_test = GraphicsTest()
-    if (not graphics_test.process()):                                                                                   graphics_test.print_help()
+            seconds_to_sleep = 60 - now.second - now.microsecond / 1_000_000
+            time.sleep(seconds_to_sleep)  # Sleep until the beginning of the next minute                                                                                                                                          # Main function
+if __name__ == "__main__":
+    graphics_test = GraphicsTest()
+    if (not graphics_test.process()):
+        graphics_test.print_help()
