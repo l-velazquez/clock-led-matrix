@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from samplebase import SampleBase
-from rgbmatrix import graphics, RGBMatrix, RGBMatrixOptions
+from .rgbmatrix import graphics, RGBMatrix, RGBMatrixOptions
 import time
 from datetime import datetime
 import random
